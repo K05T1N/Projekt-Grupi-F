@@ -1,0 +1,2 @@
+# Projekt-Grupi-F
+GiftShopApp
