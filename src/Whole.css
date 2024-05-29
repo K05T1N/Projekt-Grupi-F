@@ -1,0 +1,38 @@
+body{
+    background-color: aliceblue;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+.maincont{
+    margin: 75px;
+    margin-top: 125px;
+    margin-bottom: 25px;
+}
+.navbarcontainer{
+    background-color: rgb(248, 252, 255);
+    border-bottom: 1px black solid;
+    position: fixed;
+    padding: 20px;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    display: flex;
+    justify-content:space-between;
+}
+.navbarcontainer a{
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    color: inherit;
+    font-size: 1.05em;
+    border-radius: 5px;
+    margin: 1px;
+    background-color: aliceblue;
+    color: black;
+    padding: 8px 16px;
+    text-align: center;
+    width: min(100px);
+}
