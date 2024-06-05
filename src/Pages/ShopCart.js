@@ -108,7 +108,6 @@ export default function ShopCart({userExists, logIndex, shopcart, setShopcart} )
           else{
             if(check === false){
               check = true;
-              setTotalPaid(cart[2]*cart[4]);
               console.log(roundabout);
               console.log(totalPaid);
               return(
