@@ -1,0 +1,15 @@
+home -  html done, js done
+slideshow - done
+navbar - done
+login - done
+signup - DONE
+shippping address - donezo
+user - donito
+wishlist - done
+shop pages - don don don
+shopcart - dununu dun dun
+checkout - cant touch this
+
+Shopping Cart: proceed to checkout when ready to purchase. 
+Payment Integration: Integrate a payment gateway to securely process online payments for orders. 
+Discounts and Promotions: Implement a system for applying discounts, promo codes, and special offers during checkout to incentivize purchases.

@@ -1,24 +1,73 @@
-import React from "react"
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import Navbar from "../Components/Navbar"
 
-export default function User() {
-  return (
-    <div id="usermaincontainer">
-      <Navbar />
-      <div className="maincont">
-        Gift Shop App: Product Catalog: Display a catalog of products available
-        for purchase, categorized by type (e.g., gifts for him, gifts for her,
-        occasions). Shopping Cart: Allow users to add items to a shopping cart
-        and proceed to checkout when ready to purchase. User Accounts: Implement
-        user accounts where customers can save their shipping addresses, view
-        order history, and track package deliveries. Wishlist: Enable users to
-        create and manage wishlists, saving items they're interested in for
-        future purchase or sharing with others. Payment Integration: Integrate a
-        payment gateway to securely process online payments for orders.
-        Discounts and Promotions: Implement a system for applying discounts,
-        promo codes, and special offers during checkout to
-        incentivize purchases.
-      </div>
-    </div>
-  )
+export default function LogIn({userExists, userData, setUserExists, setLogIndex} ) {
+  const [formData, setFormData]= useState ({email:"", password:""});
+  const Navigate = useNavigate();
+  const handleInputChange = (event) => {
+    const {name, value} = event.target;
+    setFormData(prevState => {
+        return {
+           ...prevState,
+            [name]:value
+        }
+    });
+}
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        let check = 0;
+        for (let i = 0 ; i < userData.length ; i ++){
+          console.log("Tested Data:", userData[i].email, userData[i].password,"Attempted Input:" , formData.email, formData.password)
+          if(userData[i].email === formData.email){
+            if(userData[i].password === formData.password){
+              check = 2;
+              setUserExists(true);
+              setLogIndex((i+1))
+              setFormData({email:"", password:""});
+              Navigate("/User");
+              break;
+            }else{
+              check = 1;
+              setUserExists(false);
+              setLogIndex(0)
+            }
+          }
+          else{
+            if(check !== 1){
+              check = 0;
+            }
+            setUserExists(false);
+            setLogIndex(0)
+          }
+        }
+        if(check === 0){
+          alert("Invalid Email!")
+        }
+        else if(check === 1){
+          alert("Invalid Password!")
+        }
+    }
+    return(
+        <div id="loginmaincontainer">
+          <div className="loginsignup-cont">
+            <form onSubmit={handleSubmit} >
+            <h1 className="signlogheader">Log In</h1>
+            <div className="formpart">
+                  <label htmlFor='email'> Email: </label>
+                  <input type='text' id='email' name='email' value={formData.email} onChange={handleInputChange} required />
+            </div>
+            <div className="formpart">
+                <label htmlFor='password'> Password: </label>
+                <input type='password' id='password' name='password' value={formData.password} onChange={handleInputChange} required />
+            </div>
+            <div className="endform">
+             <button type='submit' className="logsign"> Log In </button> 
+             <Link to="/SignUp" className="logsign"> Not Signed Up? </Link>
+            </div>
+            </form>
+          </div>
+          <Navbar userExists={userExists} />
+        </div>
+    )
 }
